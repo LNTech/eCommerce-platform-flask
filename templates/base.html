@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Title Here</title>
+    {% if title %}
+        <title>{{ title }} - e-Commerce System</title>
+    {% else %}
+        <title>e-Commerce System</title>
+    {% endif %}
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.js') }}">
 </head>
