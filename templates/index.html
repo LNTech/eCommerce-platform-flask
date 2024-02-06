@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+<ul>
+    <li><a href="{{ url_for('user.login') }}">Login</a></li>
+    <li><a href="{{ url_for('user.register') }}">Register</a></li>
+    <li><a href="{{ url_for('user.logout') }}">Logout</a></li>
 
+    <li><a href="{{ url_for('admin_panel') }}">Admin Panel</a></li>
+    <li><a href="{{ url_for('products') }}">Products</a></li>
+    <li><a href="{{ url_for('categories') }}">Categories</a></li>
+    <li><a href="{{ url_for('subcategories') }}">Subcategories</a></li>
+</ul>
 {% endblock %}

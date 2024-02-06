@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<div class="container mt-3">
+    <form action="{{ url_for('user.register') }}" method="POST">
+        <div class="mb-2 row">
+            <label for="fname" class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name">
+            </div>
+            <label for="lname" class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name">
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+        </div>
+        <div class="mb-2">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="mb-2 row">
+            <label for="address1" class="col-sm-2 col-form-label">Address Line 1</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="address1" name="address_line_1" placeholder="Address Line 1">
+            </div>
+            <label for="address2" class="col-sm-2 col-form-label">Address Line 2</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="address2" name="address_line_2" placeholder="Address Line 2">
+            </div>
+        </div>
+
+        <div class="mb-2 row">
+            <label for="postcode" class="col-sm-2 col-form-label">Postcode</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="postcode" name="postcode" placeholder="Postcode">
+            </div>
+            <label for="city" class="col-sm-1 col-form-label">City</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="city" name="city" placeholder="City">
+            </div>
+            <label for="county" class="col-sm-1 col-form-label">County</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="county" name="county" placeholder="County">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Account</button>
+        <small>Already have an account? <a href="{{ url_for('user.login') }}">Login!</a></small>
+    </form>
+</div>
+
+{% endblock %}

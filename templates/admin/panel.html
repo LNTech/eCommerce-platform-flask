@@ -1,0 +1,45 @@
+{% set title = 'Admin Panel' %}
+{% extends "base.html" %}
+
+{% block content %}
+<h4>Categories</h4>
+<form action="{{ url_for('admin.add_category') }}" method="POST">
+    <input type="text" name="category" placeholder="Category name">
+    <input type="submit" value="Add Category"/>
+</form>
+
+
+<form action="{{ url_for('admin.add_subcategory') }}" method="POST">
+    <input type="text" name="subcategory" placeholder="Subcategory name">
+    <input type="submit" value="Add Subcategory"/>
+</form>
+
+<form action="{{ url_for('admin.assign_subcategory') }}" method="POST">
+    <select name="category_assign">
+        {% for category in categories %}
+        <option value="{{ category.public_id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <select name="subcategory_assign">
+        {% for subcategory in subcategories %}
+        <option value="{{ subcategory.public_id }}">{{ subcategory.name }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Assign Subcategory"/>
+
+</form>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Subcategories</th>
+    </tr>
+    {% for category in categories %}
+    <tr>
+        <td>{{ category.name }}</td>
+        <td>{{ category.public_id }}</td>
+        <td>{% for subcategory in category.subcategories %} {{ subcategory.name }}<br> {% endfor %}</td>
+    </tr>
+{% endfor %}
+{% endblock %}
